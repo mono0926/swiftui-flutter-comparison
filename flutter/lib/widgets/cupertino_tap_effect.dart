@@ -20,7 +20,7 @@ class _CupertinoTapEffectState extends State<CupertinoTapEffect> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    if (ModalRoute.of(context).isCurrent) {
+    if (_isHighlighted && ModalRoute.of(context).isCurrent) {
       Future<dynamic>.delayed(Duration(milliseconds: 200))
           .then<dynamic>((dynamic _) {
         setState(() => _isHighlighted = false);
