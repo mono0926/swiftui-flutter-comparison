@@ -37,6 +37,11 @@ class LandmarkRow extends StatelessWidget {
           const SizedBox(width: 8),
           Text(landmark.name),
           Spacer(),
+          if (landmark.isFavorite)
+            Icon(
+              Icons.star,
+              color: Colors.yellow[700],
+            ),
           Icon(
             CupertinoIcons.forward,
             color: Colors.black26,

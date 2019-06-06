@@ -10,6 +10,7 @@ class Landmark {
     @required this.park,
     @required this.category,
     @required this.coordinates,
+    this.isFavorite,
   });
 
   Landmark.fromJson(Map<String, dynamic> json)
@@ -20,6 +21,7 @@ class Landmark {
           park: json['park'] as String,
           state: json['state'] as String,
           coordinates: _parseCoordinates(json['coordinates']),
+          isFavorite: json['isFavorite'] as bool,
         );
 
   final int id;
