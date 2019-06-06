@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mono_kit/mono_kit.dart';
 
 import 'pages/pages.dart';
 
-void main() => runApp(App());
+void main() => runApp(RouteObserverProvider(
+      observer: RouteObserver<ModalRoute>(),
+      child: App(),
+    ));
 
 class App extends StatelessWidget {
   final _pushRoutes = {
@@ -17,6 +21,7 @@ class App extends StatelessWidget {
       data: _buildTheme(),
       child: CupertinoApp(
         title: 'Flutter',
+        navigatorObservers: [RouteObserverProvider.of(context)],
         onGenerateRoute: (settings) {
           final routeName = settings.name;
           final pushPage = _pushRoutes[routeName];

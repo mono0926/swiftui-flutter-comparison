@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:mono_kit/mono_kit.dart';
 
 class CupertinoTapEffect extends StatefulWidget {
   const CupertinoTapEffect({
@@ -14,19 +15,9 @@ class CupertinoTapEffect extends StatefulWidget {
   _CupertinoTapEffectState createState() => _CupertinoTapEffectState();
 }
 
-class _CupertinoTapEffectState extends State<CupertinoTapEffect> {
+class _CupertinoTapEffectState extends State<CupertinoTapEffect>
+    with RouteAware, RouteObserverMixin {
   bool _isHighlighted = false;
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    if (_isHighlighted && ModalRoute.of(context).isCurrent) {
-      Future<dynamic>.delayed(Duration(milliseconds: 200))
-          .then<dynamic>((dynamic _) {
-        setState(() => _isHighlighted = false);
-      });
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,5 +34,17 @@ class _CupertinoTapEffectState extends State<CupertinoTapEffect> {
         child: widget.child,
       ),
     );
+  }
+
+  @override
+  void didPopNext() {
+    super.didPopNext();
+
+    if (_isHighlighted) {
+      Future<dynamic>.delayed(Duration(milliseconds: 200))
+          .then<dynamic>((dynamic _) {
+        setState(() => _isHighlighted = false);
+      });
+    }
   }
 }
