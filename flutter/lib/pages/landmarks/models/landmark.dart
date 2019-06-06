@@ -6,10 +6,10 @@ class Landmark {
     @required this.id,
     @required this.name,
     @required this.imageName,
-    this.state,
-    this.park,
-    this.category,
-    this.coordinates,
+    @required this.state,
+    @required this.park,
+    @required this.category,
+    @required this.coordinates,
   });
 
   Landmark.fromJson(Map<String, dynamic> json)
@@ -25,10 +25,10 @@ class Landmark {
   final int id;
   final String name;
   final String imageName;
-  String state;
-  String park;
-  Category category;
-  Coordinates coordinates;
+  final String state;
+  final String park;
+  final Category category;
+  final Coordinates coordinates;
 
   LatLng get latLng => LatLng(coordinates.latitude, coordinates.longitude);
 
