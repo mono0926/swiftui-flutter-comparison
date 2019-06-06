@@ -21,7 +21,7 @@ class Content extends StatelessWidget {
           children: [
             SizedBox(
               height: 300,
-              child: MapView(coordinates: landmark.coordinates),
+              child: MapView(latLng: landmark.latLng),
             ),
             Positioned(
               bottom: -130,

@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-import 'models/models.dart';
-
 class MapView extends StatelessWidget {
   const MapView({
-    @required this.coordinates,
+    @required this.latLng,
   });
 
-  final Coordinates coordinates;
+  final LatLng latLng;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +14,7 @@ class MapView extends StatelessWidget {
       mapType: MapType.normal,
       myLocationButtonEnabled: false,
       initialCameraPosition: CameraPosition(
-        target: LatLng(coordinates.latitude, coordinates.longitude),
+        target: latLng,
         zoom: 7.5,
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class Landmark {
   Landmark({
@@ -28,6 +29,8 @@ class Landmark {
   String park;
   Category category;
   Coordinates coordinates;
+
+  LatLng get latLng => LatLng(coordinates.latitude, coordinates.longitude);
 
   static Coordinates _parseCoordinates(dynamic json) {
     final map = (json as Map).cast<String, dynamic>();
