@@ -29,6 +29,7 @@ class Landmark {
   final String park;
   final Category category;
   final Coordinates coordinates;
+  bool isFavorite;
 
   LatLng get latLng => LatLng(coordinates.latitude, coordinates.longitude);
 
