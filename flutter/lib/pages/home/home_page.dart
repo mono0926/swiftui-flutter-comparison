@@ -1,11 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:swiftui_flutter/pages/tutorial1/tutorial1_page.dart';
-
-const double _horizontalMargin = 16;
+import 'package:swiftui_flutter/pages/essentials/essentials_page.dart';
+import 'package:swiftui_flutter/widgets/widgets.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage();
+
+  static const _pages = [
+    EssentialsPage.routeName,
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -13,63 +16,35 @@ class HomePage extends StatelessWidget {
       navigationBar: CupertinoNavigationBar(
         middle: const Text('Flutter'),
       ),
-      child: ListView.separated(
-        itemCount: 3,
+      child: ListView.builder(
+        itemCount: _pages.length,
         itemBuilder: (context, index) {
-          return const _ListItem();
+          return _ListItem(routeName: _pages[index]);
         },
-        separatorBuilder: (context, index) => const Divider(
-              height: 0,
-              indent: _horizontalMargin,
-            ),
       ),
     );
   }
 }
 
-class _ListItem extends StatefulWidget {
-  const _ListItem();
+class _ListItem extends StatelessWidget {
+  const _ListItem({
+    @required this.routeName,
+  });
 
-  @override
-  __ListItemState createState() => __ListItemState();
-}
-
-class __ListItemState extends State<_ListItem> {
-  bool _isHighlighted = false;
+  final String routeName;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () async {
-        // ignore: unawaited_futures
-        Navigator.of(context).pushNamed(Tutorial1Page.routeName);
-        await Future<dynamic>.delayed(Duration(seconds: 1));
-        setState(() => _isHighlighted = false);
-      },
-      onTapDown: (_) => setState(() => _isHighlighted = true),
-      onTapCancel: () => setState(() => _isHighlighted = false),
-      child: AnimatedContainer(
-        duration: Duration(milliseconds: 200),
-        curve: Curves.easeInOut,
-        color: _isHighlighted ? const Color(0xFFD1D1D6) : Colors.white,
-        height: 44,
-        child: SafeArea(
-          top: false,
-          bottom: false,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: _horizontalMargin),
-            child: Row(
-              children: [
-                Expanded(
-                    child: Text(Tutorial1Page.routeName.replaceAll('/', ''))),
-                Icon(
-                  CupertinoIcons.forward,
-                  color: Colors.black26,
-                ),
-              ],
-            ),
+    return CupertinoCell(
+      onTap: () => Navigator.of(context).pushNamed(routeName),
+      child: Row(
+        children: [
+          Expanded(child: Text(routeName.replaceAll('/', ''))),
+          Icon(
+            CupertinoIcons.forward,
+            color: Colors.black26,
           ),
-        ),
+        ],
       ),
     );
   }

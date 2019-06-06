@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'circle_image.dart';
 import 'map_view.dart';
+import 'models/models.dart';
 
 class Content extends StatelessWidget {
-  const Content();
+  const Content({
+    @required this.landmark,
+  });
+
+  final Landmark landmark;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -12,14 +18,14 @@ class Content extends StatelessWidget {
         Stack(
           alignment: Alignment.bottomCenter,
           overflow: Overflow.visible,
-          children: const [
+          children: [
             SizedBox(
               height: 300,
-              child: MapView(),
+              child: MapView(coordinates: landmark.coordinates),
             ),
             Positioned(
               bottom: -130,
-              child: CircleImage(),
+              child: CircleImage(imageName: landmark.imageName),
             ),
           ],
         ),
@@ -30,18 +36,22 @@ class Content extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Turtle Rock',
+                landmark.name,
                 style: Theme.of(context).textTheme.title,
               ),
               Row(
                 children: [
-                  Text(
-                    'Joshua Tree National Park',
-                    style: Theme.of(context).textTheme.subhead,
+                  Expanded(
+                    child: Text(
+                      landmark.park,
+                      style: Theme.of(context).textTheme.subhead,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
-                  Spacer(),
+                  const SizedBox(width: 4),
                   Text(
-                    'California',
+                    landmark.state,
                     style: Theme.of(context).textTheme.subhead,
                   ),
                 ],

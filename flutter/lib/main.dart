@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'pages/home/home_page.dart';
-import 'pages/tutorial1/tutorial1_page.dart';
+import 'pages/pages.dart';
 
 void main() => runApp(App());
 
 class App extends StatelessWidget {
   final _pushRoutes = {
-    Tutorial1Page.routeName: const Tutorial1Page(),
+    '/': const HomePage(),
+    EssentialsPage.routeName: const EssentialsPage(),
   };
 
   @override
@@ -17,14 +17,15 @@ class App extends StatelessWidget {
       data: _buildTheme(),
       child: CupertinoApp(
         title: 'Flutter',
-        home: const HomePage(),
         onGenerateRoute: (settings) {
           final routeName = settings.name;
           final pushPage = _pushRoutes[routeName];
           if (pushPage != null) {
+            final title = routeName.replaceAll('/', '');
             return CupertinoPageRoute<dynamic>(
               settings: settings,
               builder: (context) => pushPage,
+              title: title.isEmpty ? 'Flutter' : title,
             );
           }
           return null;
@@ -44,6 +45,7 @@ class App extends StatelessWidget {
           fontSize: 16,
         ),
       ),
+      dividerColor: Colors.black26,
     );
   }
 }

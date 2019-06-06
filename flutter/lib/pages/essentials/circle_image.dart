@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 
 class CircleImage extends StatelessWidget {
-  const CircleImage();
+  const CircleImage({
+    @required this.imageName,
+  });
+
+  final String imageName;
+
   @override
   Widget build(BuildContext context) {
     return Container(
       child: ClipOval(
-        child: Image.asset('assets/turtlerock.jpg'),
+        child: Image.asset('assets/$imageName.jpg'),
       ),
+      width: 250,
+      height: 250,
       decoration: BoxDecoration(
         border: Border.all(
           width: 4,

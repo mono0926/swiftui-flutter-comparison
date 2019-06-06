@@ -1,12 +1,16 @@
 import 'package:flutter/cupertino.dart';
 
 import 'content.dart';
+import 'models/models.dart';
 
-class Tutorial1Page extends StatelessWidget {
-  const Tutorial1Page();
+class LandmarkDetail extends StatelessWidget {
+  const LandmarkDetail({
+    @required this.landmark,
+  });
 
-  static const routeName = '/Creating and Combining Views';
+  final Landmark landmark;
 
+  static const routeName = 'LandmarkDetail';
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -14,7 +18,9 @@ class Tutorial1Page extends StatelessWidget {
         middle: Text(routeName.replaceAll('/', '')),
       ),
       child: SafeArea(
-        child: const Content(),
+        child: Content(
+          landmark: landmark,
+        ),
       ),
     );
   }
