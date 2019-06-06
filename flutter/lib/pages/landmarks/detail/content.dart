@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../models/models.dart';
 import 'circle_image.dart';
 import 'map_view.dart';
-import 'models/models.dart';
 
 class Content extends StatelessWidget {
   const Content({

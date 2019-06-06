@@ -3,8 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'landmark_row.dart';
 import 'models/models.dart';
 
-class EssentialsPage extends StatelessWidget {
-  const EssentialsPage();
+class LandmarksPage extends StatelessWidget {
+  const LandmarksPage();
 
   static const routeName = '/Landmarks';
 

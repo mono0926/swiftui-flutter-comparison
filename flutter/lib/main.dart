@@ -12,7 +12,7 @@ void main() => runApp(RouteObserverProvider(
 class App extends StatelessWidget {
   final _pushRoutes = {
     '/': const HomePage(),
-    EssentialsPage.routeName: const EssentialsPage(),
+    LandmarksPage.routeName: const LandmarksPage(),
   };
 
   @override

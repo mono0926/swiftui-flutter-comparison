@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
+import '../models/models.dart';
 import 'content.dart';
-import 'models/models.dart';
 
 class LandmarkDetail extends StatelessWidget {
   const LandmarkDetail({

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:swiftui_flutter/widgets/widgets.dart';
 
-import 'landmark_detail.dart';
+import 'detail/landmark_detail.dart';
 import 'models/models.dart';
 
 class LandmarkRow extends StatelessWidget {

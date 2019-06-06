@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:swiftui_flutter/pages/essentials/essentials_page.dart';
 import 'package:swiftui_flutter/widgets/widgets.dart';
+
+import '../pages.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage();
 
   static const _pages = [
-    EssentialsPage.routeName,
+    LandmarksPage.routeName,
   ];
 
   @override
