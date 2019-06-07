@@ -128,7 +128,7 @@
 		FE786AC422A8B3330092C273 /* swiftuiFlutter */ = {
 			isa = PBXGroup;
 			children = (
-				FE786AD922A8B5CB0092C273 /* Essentials */,
+				FE786AD922A8B5CB0092C273 /* Landmarks */,
 				FE786AC522A8B3330092C273 /* AppDelegate.swift */,
 				FE786AC722A8B3330092C273 /* SceneDelegate.swift */,
 				FE786AC922A8B3330092C273 /* ContentView.swift */,
@@ -148,7 +148,7 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		FE786AD922A8B5CB0092C273 /* Essentials */ = {
+		FE786AD922A8B5CB0092C273 /* Landmarks */ = {
 			isa = PBXGroup;
 			children = (
 				FE204A6B22A8B73D0035B074 /* Supporting Views */,
@@ -158,7 +158,7 @@
 				FE204A8822A8BA4E0035B074 /* LandmarkList.swift */,
 				FE204A8A22A8BA760035B074 /* LandmarkRow.swift */,
 			);
-			path = Essentials;
+			path = Landmarks;
 			sourceTree = "<group>";
 		};
 		FE786ADC22A8B6940092C273 /* Models */ = {
