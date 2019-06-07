@@ -4,4 +4,4 @@
 
 SwiftUI | Flutter(WIP)
 --- | ---
-![](creating-and-combining-views/screenshots/swiftui.png) | ![](creating-and-combining-views/screenshots/flutter.jpeg)
+![](screenshots/SwiftUI.png) | ![](screenshots/Flutter.jpeg)
