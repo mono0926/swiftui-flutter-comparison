@@ -8,7 +8,6 @@ class Landmark {
     @required this.imageName,
     @required this.state,
     @required this.park,
-    @required this.category,
     @required this.coordinates,
     this.isFavorite,
   });
@@ -29,7 +28,6 @@ class Landmark {
   final String imageName;
   final String state;
   final String park;
-  final Category category;
   final Coordinates coordinates;
   bool isFavorite;
 
@@ -42,12 +40,6 @@ class Landmark {
       longitude: map['longitude'] as double,
     );
   }
-}
-
-enum Category {
-  featured,
-  lakes,
-  rivers,
 }
 
 class Coordinates {

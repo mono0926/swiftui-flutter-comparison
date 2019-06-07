@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:swiftui_flutter/widgets/widgets.dart';
 
 import 'landmark_row.dart';
 import 'models/models.dart';
@@ -10,19 +12,38 @@ class LandmarksPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final data = UserDataProvider.of(context);
     return CupertinoPageScaffold(
       child: CustomScrollView(
         slivers: [
           CupertinoSliverNavigationBar(),
-          FutureBuilder<List<Landmark>>(
-            future: DataLoader().load(),
-            builder: (context, snapshot) {
-              if (!snapshot.hasData) {
-                return const SliverFillRemaining(
-                  child: CupertinoActivityIndicator(),
-                );
-              }
-              final landmarks = snapshot.data;
+          SliverList(
+            delegate: SliverChildListDelegate.fixed(
+              [
+                CupertinoCell(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text('Favorites only'),
+                      ValueListenableBuilder<bool>(
+                        valueListenable: data.showFavoritesOnly,
+                        builder: (context, showFavoritesOnly, _child) {
+                          return CupertinoSwitch(
+                            value: showFavoritesOnly,
+                            onChanged: (value) => data.updateShowFavoritesOnly(
+                                favoritesOnly: value),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          ValueListenableBuilder<List<Landmark>>(
+            valueListenable: data.landmarksFiltered,
+            builder: (context, landmarks, child) {
               return SliverList(
                 delegate: SliverChildBuilderDelegate(
                   (context, index) {

@@ -1,3 +1,6 @@
+import 'dart:collection';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../models/models.dart';
@@ -6,13 +9,16 @@ import 'map_view.dart';
 
 class Content extends StatelessWidget {
   const Content({
-    @required this.landmark,
+    @required this.id,
   });
 
-  final Landmark landmark;
+  final int id;
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final data = UserDataProvider.of(context);
+    final landmark = data.getLandmark(id);
     return Column(
       children: [
         Stack(
@@ -35,16 +41,36 @@ class Content extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                landmark.name,
-                style: Theme.of(context).textTheme.title,
+              Row(
+                children: <Widget>[
+                  Text(
+                    landmark.name,
+                    style: textTheme.title,
+                  ),
+                  ValueListenableBuilder<UnmodifiableListView<Landmark>>(
+                    valueListenable: data.landmarksAll,
+                    builder: (context, landmarks, child) {
+                      final landmark = data.getLandmark(id);
+                      final isFavorite = landmark.isFavorite;
+                      return CupertinoButton(
+                        onPressed: () {
+                          data.updateIsFavorite(id, isFavorite: !isFavorite);
+                        },
+                        child: Icon(
+                          isFavorite ? Icons.star : Icons.star_border,
+                          color: isFavorite ? Colors.yellow[700] : Colors.grey,
+                        ),
+                      );
+                    },
+                  )
+                ],
               ),
               Row(
                 children: [
                   Expanded(
                     child: Text(
                       landmark.park,
-                      style: Theme.of(context).textTheme.subhead,
+                      style: textTheme.subhead,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -52,7 +78,7 @@ class Content extends StatelessWidget {
                   const SizedBox(width: 4),
                   Text(
                     landmark.state,
-                    style: Theme.of(context).textTheme.subhead,
+                    style: textTheme.subhead,
                   ),
                 ],
               )

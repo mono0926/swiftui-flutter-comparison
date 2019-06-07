@@ -20,7 +20,7 @@ class LandmarkRow extends StatelessWidget {
         Navigator.of(context).push<dynamic>(
           CupertinoPageRoute<dynamic>(
             builder: (context) {
-              return LandmarkDetail(landmark: landmark);
+              return LandmarkDetail(id: landmark.id);
             },
             title: LandmarkDetail.routeName,
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mono_kit/mono_kit.dart';
+import 'package:swiftui_flutter/pages/landmarks/models/models.dart';
 
 import 'pages/pages.dart';
 
@@ -19,22 +20,25 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return Theme(
       data: _buildTheme(),
-      child: CupertinoApp(
-        title: 'Flutter',
-        navigatorObservers: [RouteObserverProvider.of(context)],
-        onGenerateRoute: (settings) {
-          final routeName = settings.name;
-          final pushPage = _pushRoutes[routeName];
-          if (pushPage != null) {
-            final title = routeName.replaceAll('/', '');
-            return CupertinoPageRoute<dynamic>(
-              settings: settings,
-              builder: (context) => pushPage,
-              title: title.isEmpty ? 'Flutter' : title,
-            );
-          }
-          return null;
-        },
+      child: UserDataProvider(
+        UserData(),
+        child: CupertinoApp(
+          title: 'Flutter',
+          navigatorObservers: [RouteObserverProvider.of(context)],
+          onGenerateRoute: (settings) {
+            final routeName = settings.name;
+            final pushPage = _pushRoutes[routeName];
+            if (pushPage != null) {
+              final title = routeName.replaceAll('/', '');
+              return CupertinoPageRoute<dynamic>(
+                settings: settings,
+                builder: (context) => pushPage,
+                title: title.isEmpty ? 'Flutter' : title,
+              );
+            }
+            return null;
+          },
+        ),
       ),
     );
   }

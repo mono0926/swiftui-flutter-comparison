@@ -1,14 +1,13 @@
 import 'package:flutter/cupertino.dart';
 
-import '../models/models.dart';
 import 'content.dart';
 
 class LandmarkDetail extends StatelessWidget {
   const LandmarkDetail({
-    @required this.landmark,
+    @required this.id,
   });
 
-  final Landmark landmark;
+  final int id;
 
   static const routeName = 'LandmarkDetail';
   @override
@@ -19,7 +18,7 @@ class LandmarkDetail extends StatelessWidget {
       ),
       child: SafeArea(
         child: Content(
-          landmark: landmark,
+          id: id,
         ),
       ),
     );

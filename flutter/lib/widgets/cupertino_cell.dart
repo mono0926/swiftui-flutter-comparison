@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:swiftui_flutter/widgets/cupertino_tap_effect.dart';
 
 class CupertinoCell extends StatelessWidget {
   const CupertinoCell({
     Key key,
     @required this.child,
-    @required this.onTap,
+    this.onTap,
     this.minHeight = 44,
     this.horizontalMargin = 15,
   }) : super(key: key);
@@ -17,32 +18,35 @@ class CupertinoCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoTapEffect(
-      onTap: onTap,
-      child: SafeArea(
-        top: false,
-        bottom: false,
-        child: ConstrainedBox(
-          constraints: BoxConstraints(minHeight: minHeight),
-          child: Padding(
-            padding: EdgeInsets.only(left: horizontalMargin),
-            child: Container(
-              decoration: BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(
-                    color: const Color(0xFFBCBBC1),
-                    width: 1 / MediaQuery.of(context).devicePixelRatio,
-                  ),
+    final body = SafeArea(
+      top: false,
+      bottom: false,
+      child: ConstrainedBox(
+        constraints: BoxConstraints(minHeight: minHeight),
+        child: Padding(
+          padding: EdgeInsets.only(left: horizontalMargin),
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: Theme.of(context).dividerColor,
+                  width: 1 / MediaQuery.of(context).devicePixelRatio,
                 ),
               ),
-              child: Padding(
-                padding: EdgeInsets.only(right: horizontalMargin),
-                child: child,
-              ),
+            ),
+            child: Padding(
+              padding: EdgeInsets.only(right: horizontalMargin),
+              child: child,
             ),
           ),
         ),
       ),
     );
+    return onTap == null
+        ? body
+        : CupertinoTapEffect(
+            onTap: onTap,
+            child: body,
+          );
   }
 }
