@@ -28,9 +28,7 @@ class UserData {
 
   void updateShowFavoritesOnly({@required bool favoritesOnly}) {
     _showFavoritesOnly.value = favoritesOnly;
-    _landmarksFiltered.value = UnmodifiableListView(favoritesOnly
-        ? _landmarksLoaded.where((l) => l.isFavorite)
-        : _landmarksLoaded);
+    _updateLandmarks();
   }
 
   void updateIsFavorite(int id, {@required bool isFavorite}) {
@@ -45,7 +43,9 @@ class UserData {
 
   void _updateLandmarks() {
     _landmarksAll.value = UnmodifiableListView(_landmarksLoaded);
-    _landmarksFiltered.value = _landmarksAll.value;
+    _landmarksFiltered.value = UnmodifiableListView(_showFavoritesOnly.value
+        ? _landmarksLoaded.where((l) => l.isFavorite)
+        : _landmarksLoaded);
   }
 }
 
