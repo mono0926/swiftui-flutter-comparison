@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:swiftui_flutter/pages/landmarks/models/models.dart';
 
 import 'content.dart';
 
@@ -14,7 +15,7 @@ class LandmarkDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        middle: Text(routeName.replaceAll('/', '')),
+        middle: Text(UserDataProvider.of(context).getLandmark(id).name),
       ),
       child: SafeArea(
         child: Content(
