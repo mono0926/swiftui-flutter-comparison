@@ -12,7 +12,7 @@ struct ContentView : View {
     var body: some View {
         NavigationView {
             List {
-                NavigationButton(destination: LandmarkList()) {
+                NavigationButton(destination: LandmarkList().environmentObject(UserData())) {
                     HStack {
                         Text("Landmarks")
                     }

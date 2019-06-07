@@ -34,6 +34,7 @@
 		FE786ACF22A8B3330092C273 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE786ACE22A8B3330092C273 /* Preview Assets.xcassets */; };
 		FE786AD222A8B3330092C273 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE786AD022A8B3330092C273 /* LaunchScreen.storyboard */; };
 		FE786ADB22A8B6730092C273 /* LandmarkDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE786ADA22A8B6730092C273 /* LandmarkDetail.swift */; };
+		FEE397E422AA541C00D483A5 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE397E322AA541C00D483A5 /* UserData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		FE786AD122A8B3330092C273 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE786AD322A8B3330092C273 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE786ADA22A8B6730092C273 /* LandmarkDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDetail.swift; sourceTree = "<group>"; };
+		FEE397E322AA541C00D483A5 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 			children = (
 				FE204A6422A8B6BC0035B074 /* Landmark.swift */,
 				FE204A6622A8B6E80035B074 /* Data.swift */,
+				FEE397E322AA541C00D483A5 /* UserData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				FE786ADB22A8B6730092C273 /* LandmarkDetail.swift in Sources */,
 				FE204A6722A8B6E80035B074 /* Data.swift in Sources */,
 				FE204A8922A8BA4E0035B074 /* LandmarkList.swift in Sources */,
+				FEE397E422AA541C00D483A5 /* UserData.swift in Sources */,
 				FE786AC622A8B3330092C273 /* AppDelegate.swift in Sources */,
 				FE786AC822A8B3330092C273 /* SceneDelegate.swift in Sources */,
 				FE786ACA22A8B3330092C273 /* ContentView.swift in Sources */,
