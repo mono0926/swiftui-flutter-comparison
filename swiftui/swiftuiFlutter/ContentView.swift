@@ -9,10 +9,12 @@
 import SwiftUI
 
 struct ContentView : View {
+    @EnvironmentObject var userData: UserData
+    
     var body: some View {
         NavigationView {
             List {
-                NavigationButton(destination: LandmarkList().environmentObject(UserData())) {
+                NavigationButton(destination: LandmarkList()) {
                     HStack {
                         Text("Landmarks")
                     }
