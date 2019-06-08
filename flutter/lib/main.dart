@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mono_kit/mono_kit.dart';
+import 'package:provider/provider.dart';
 import 'package:swiftui_flutter/pages/landmarks/models/models.dart';
 
 import 'pages/pages.dart';
@@ -20,8 +21,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return Theme(
       data: _buildTheme(),
-      child: UserDataProvider(
-        UserData(),
+      child: ChangeNotifierProvider.value(
+        value: UserData(),
         child: CupertinoApp(
           title: 'Flutter',
           navigatorObservers: [RouteObserverProvider.of(context)],

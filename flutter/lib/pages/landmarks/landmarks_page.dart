@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:swiftui_flutter/widgets/widgets.dart';
 
 import 'landmark_row.dart';
@@ -12,7 +13,8 @@ class LandmarksPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final data = UserDataProvider.of(context);
+    final data = Provider.of<UserData>(context);
+    final landmarks = data.landmarks;
     return CupertinoPageScaffold(
       child: CustomScrollView(
         slivers: [
@@ -25,15 +27,10 @@ class LandmarksPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text('Favorites only'),
-                      ValueListenableBuilder<bool>(
-                        valueListenable: data.showFavoritesOnly,
-                        builder: (context, showFavoritesOnly, _child) {
-                          return CupertinoSwitch(
-                            value: showFavoritesOnly,
-                            onChanged: (value) => data.updateShowFavoritesOnly(
-                                favoritesOnly: value),
-                          );
-                        },
+                      CupertinoSwitch(
+                        value: data.showFavoritesOnly,
+                        onChanged: (value) =>
+                            data.updateShowFavoritesOnly(favoritesOnly: value),
                       ),
                     ],
                   ),
@@ -41,22 +38,17 @@ class LandmarksPage extends StatelessWidget {
               ],
             ),
           ),
-          ValueListenableBuilder<List<Landmark>>(
-            valueListenable: data.landmarksFiltered,
-            builder: (context, landmarks, child) {
-              return SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    final landmark = landmarks[index];
-                    return LandmarkRow(
-                      key: ValueKey(landmark.id),
-                      landmark: landmark,
-                    );
-                  },
-                  childCount: landmarks.length,
-                ),
-              );
-            },
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                final landmark = landmarks[index];
+                return LandmarkRow(
+                  key: ValueKey(landmark.id),
+                  landmark: landmark,
+                );
+              },
+              childCount: landmarks.length,
+            ),
           ),
         ],
       ),

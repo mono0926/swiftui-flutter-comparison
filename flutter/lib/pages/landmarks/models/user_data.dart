@@ -5,66 +5,32 @@ import 'package:flutter/widgets.dart';
 
 import 'models.dart';
 
-class UserData {
+class UserData extends ChangeNotifier {
   UserData() {
     _loadLandmarks();
   }
 
-  final _showFavoritesOnly = ValueNotifier<bool>(false);
-  final _landmarksAll =
-      ValueNotifier<UnmodifiableListView<Landmark>>(UnmodifiableListView([]));
-  final _landmarksFiltered =
-      ValueNotifier<UnmodifiableListView<Landmark>>(UnmodifiableListView([]));
-  final _landmarksLoaded = <Landmark>[];
+  bool _showFavoritesOnly = false;
+  final _landmarks = <Landmark>[];
 
-  ValueListenable<bool> get showFavoritesOnly => _showFavoritesOnly;
-  ValueListenable<UnmodifiableListView<Landmark>> get landmarksAll =>
-      _landmarksAll;
-  ValueListenable<UnmodifiableListView<Landmark>> get landmarksFiltered =>
-      _landmarksFiltered;
+  bool get showFavoritesOnly => _showFavoritesOnly;
+  UnmodifiableListView<Landmark> get landmarks => UnmodifiableListView(
+      showFavoritesOnly ? _landmarks.where((l) => l.isFavorite) : _landmarks);
 
-  Landmark getLandmark(int id) =>
-      _landmarksLoaded.firstWhere((l) => l.id == id);
+  Landmark getLandmark(int id) => _landmarks.firstWhere((l) => l.id == id);
 
   void updateShowFavoritesOnly({@required bool favoritesOnly}) {
-    _showFavoritesOnly.value = favoritesOnly;
-    _updateLandmarks();
+    _showFavoritesOnly = favoritesOnly;
+    notifyListeners();
   }
 
   void updateIsFavorite(int id, {@required bool isFavorite}) {
     getLandmark(id).isFavorite = isFavorite;
-    _updateLandmarks();
+    notifyListeners();
   }
 
   void _loadLandmarks() async {
-    _landmarksLoaded.addAll(await DataLoader().load());
-    _updateLandmarks();
+    _landmarks.addAll(await DataLoader().load());
+    notifyListeners();
   }
-
-  void _updateLandmarks() {
-    _landmarksAll.value = UnmodifiableListView(_landmarksLoaded);
-    _landmarksFiltered.value = UnmodifiableListView(_showFavoritesOnly.value
-        ? _landmarksLoaded.where((l) => l.isFavorite)
-        : _landmarksLoaded);
-  }
-}
-
-class UserDataProvider extends InheritedWidget {
-  const UserDataProvider(
-    this.data, {
-    Key key,
-    @required Widget child,
-  })  : assert(child != null),
-        super(key: key, child: child);
-
-  final UserData data;
-
-  static UserData of(BuildContext context) {
-    return (context.inheritFromWidgetOfExactType(UserDataProvider)
-            as UserDataProvider)
-        .data;
-  }
-
-  @override
-  bool updateShouldNotify(UserDataProvider oldWidget) => false;
 }

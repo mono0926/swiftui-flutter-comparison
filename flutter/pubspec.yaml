@@ -8,6 +8,7 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^0.1.2
   google_maps_flutter: any
+  provider: any
   mono_kit: any
 dev_dependencies:
   flutter_test:

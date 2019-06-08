@@ -2,6 +2,7 @@ import 'dart:collection';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../models/models.dart';
 import 'circle_image.dart';
@@ -17,8 +18,9 @@ class Content extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final data = UserDataProvider.of(context);
+    final data = Provider.of<UserData>(context);
     final landmark = data.getLandmark(id);
+    final isFavorite = landmark.isFavorite;
     return Column(
       children: [
         Stack(
@@ -42,27 +44,20 @@ class Content extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                children: <Widget>[
+                children: [
                   Text(
                     landmark.name,
                     style: textTheme.title,
                   ),
-                  ValueListenableBuilder<UnmodifiableListView<Landmark>>(
-                    valueListenable: data.landmarksAll,
-                    builder: (context, landmarks, child) {
-                      final landmark = data.getLandmark(id);
-                      final isFavorite = landmark.isFavorite;
-                      return CupertinoButton(
-                        onPressed: () {
-                          data.updateIsFavorite(id, isFavorite: !isFavorite);
-                        },
-                        child: Icon(
-                          isFavorite ? Icons.star : Icons.star_border,
-                          color: isFavorite ? Colors.yellow[700] : Colors.grey,
-                        ),
-                      );
+                  CupertinoButton(
+                    onPressed: () {
+                      data.updateIsFavorite(id, isFavorite: !isFavorite);
                     },
-                  )
+                    child: Icon(
+                      isFavorite ? Icons.star : Icons.star_border,
+                      color: isFavorite ? Colors.yellow[700] : Colors.grey,
+                    ),
+                  ),
                 ],
               ),
               Row(
