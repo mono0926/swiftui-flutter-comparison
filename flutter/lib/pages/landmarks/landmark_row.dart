@@ -1,26 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:swiftui_flutter/widgets/widgets.dart';
 
 import 'detail/landmark_detail.dart';
 import 'models/models.dart';
 
 class LandmarkRow extends StatelessWidget {
-  const LandmarkRow({
-    Key key,
-    @required this.landmark,
-  }) : super(key: key);
-
-  final Landmark landmark;
+  const LandmarkRow({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final landmark = Provider.of<Landmark>(context);
     return CupertinoCell(
       onTap: () {
-        Navigator.of(context).push<dynamic>(
-          CupertinoPageRoute<dynamic>(
+        Navigator.of(context).push<void>(
+          CupertinoPageRoute<void>(
             builder: (context) {
-              return LandmarkDetail(id: landmark.id);
+              return Provider.value(
+                value: landmark,
+                child: const LandmarkDetail(),
+              );
             },
             title: LandmarkDetail.routeName,
           ),

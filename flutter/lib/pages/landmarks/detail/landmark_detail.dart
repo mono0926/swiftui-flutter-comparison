@@ -5,25 +5,18 @@ import 'package:swiftui_flutter/pages/landmarks/models/models.dart';
 import 'content.dart';
 
 class LandmarkDetail extends StatelessWidget {
-  const LandmarkDetail({
-    @required this.id,
-  });
-
-  final int id;
+  const LandmarkDetail();
 
   static const routeName = 'LandmarkDetail';
   @override
   Widget build(BuildContext context) {
-    final data = Provider.of<UserData>(context);
-    final landmark = data.getLandmark(id);
+    final landmark = Provider.of<Landmark>(context);
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: Text(landmark.name),
       ),
       child: SafeArea(
-        child: Content(
-          id: id,
-        ),
+        child: const Content(),
       ),
     );
   }

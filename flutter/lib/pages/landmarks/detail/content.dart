@@ -9,17 +9,13 @@ import 'circle_image.dart';
 import 'map_view.dart';
 
 class Content extends StatelessWidget {
-  const Content({
-    @required this.id,
-  });
-
-  final int id;
+  const Content();
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final data = Provider.of<UserData>(context);
-    final landmark = data.getLandmark(id);
+    final landmark = Provider.of<Landmark>(context);
     final isFavorite = landmark.isFavorite;
     return Column(
       children: [
@@ -51,7 +47,10 @@ class Content extends StatelessWidget {
                   ),
                   CupertinoButton(
                     onPressed: () {
-                      data.updateIsFavorite(id, isFavorite: !isFavorite);
+                      data.updateIsFavorite(
+                        landmark.id,
+                        isFavorite: !isFavorite,
+                      );
                     },
                     child: Icon(
                       isFavorite ? Icons.star : Icons.star_border,
