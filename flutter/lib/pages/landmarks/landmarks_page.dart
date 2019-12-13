@@ -18,7 +18,7 @@ class LandmarksPage extends StatelessWidget {
     return CupertinoPageScaffold(
       child: CustomScrollView(
         slivers: [
-          CupertinoSliverNavigationBar(),
+          const CupertinoSliverNavigationBar(),
           SliverList(
             delegate: SliverChildListDelegate.fixed(
               [

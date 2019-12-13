@@ -1,15 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mono_kit/mono_kit.dart';
 import 'package:provider/provider.dart';
+import 'package:route_observer_mixin/route_observer_mixin.dart';
 import 'package:swiftui_flutter/pages/landmarks/models/models.dart';
 
 import 'pages/pages.dart';
 
-void main() => runApp(RouteObserverProvider(
-      observer: RouteObserver<ModalRoute>(),
-      child: App(),
-    ));
+void main() => runApp(
+      RouteObserverProvider(
+        child: App(),
+      ),
+    );
 
 class App extends StatelessWidget {
   final _pushRoutes = {
@@ -21,8 +22,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return Theme(
       data: _buildTheme(),
-      child: ChangeNotifierProvider.value(
-        value: UserData(),
+      child: ChangeNotifierProvider(
+        create: (context) => UserData(),
         child: CupertinoApp(
           title: 'Flutter',
           navigatorObservers: [RouteObserverProvider.of(context)],

@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:mono_kit/mono_kit.dart';
+import 'package:route_observer_mixin/route_observer_mixin.dart';
 
 class CupertinoTapEffect extends StatefulWidget {
   const CupertinoTapEffect({
@@ -26,7 +26,7 @@ class _CupertinoTapEffectState extends State<CupertinoTapEffect>
       onTapDown: (_) => setState(() => _isHighlighted = true),
       onTapCancel: () => setState(() => _isHighlighted = false),
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 100),
+        duration: const Duration(milliseconds: 100),
         curve: Curves.easeInOut,
         color: _isHighlighted
             ? const Color(0xFFD1D1D6)
@@ -41,7 +41,7 @@ class _CupertinoTapEffectState extends State<CupertinoTapEffect>
     super.didPopNext();
 
     if (_isHighlighted) {
-      Future<dynamic>.delayed(Duration(milliseconds: 200))
+      Future<dynamic>.delayed(const Duration(milliseconds: 200))
           .then<dynamic>((dynamic _) {
         setState(() => _isHighlighted = false);
       });

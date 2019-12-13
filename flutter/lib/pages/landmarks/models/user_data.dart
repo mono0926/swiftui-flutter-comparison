@@ -29,7 +29,7 @@ class UserData extends ChangeNotifier {
     notifyListeners();
   }
 
-  void _loadLandmarks() async {
+  Future<void> _loadLandmarks() async {
     _landmarks.addAll(await DataLoader().load());
     notifyListeners();
   }

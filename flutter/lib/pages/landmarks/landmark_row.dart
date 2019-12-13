@@ -36,7 +36,7 @@ class LandmarkRow extends StatelessWidget {
           ),
           const SizedBox(width: 8),
           Text(landmark.name),
-          Spacer(),
+          const Spacer(),
           if (landmark.isFavorite)
             Icon(
               Icons.star,

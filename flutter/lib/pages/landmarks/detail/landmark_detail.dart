@@ -15,8 +15,8 @@ class LandmarkDetail extends StatelessWidget {
       navigationBar: CupertinoNavigationBar(
         middle: Text(landmark.name),
       ),
-      child: SafeArea(
-        child: const Content(),
+      child: const SafeArea(
+        child: Content(),
       ),
     );
   }

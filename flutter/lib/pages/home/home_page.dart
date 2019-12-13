@@ -14,8 +14,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: const Text('Flutter'),
+      navigationBar: const CupertinoNavigationBar(
+        middle: Text('Flutter'),
       ),
       child: ListView.builder(
         itemCount: _pages.length,
