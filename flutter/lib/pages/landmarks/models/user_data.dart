@@ -28,7 +28,10 @@ class UserData extends ChangeNotifier {
   }
 
   void updateIsFavorite(int id, {@required bool isFavorite}) {
-    getLandmark(id).isFavorite = isFavorite;
+    final landmark = getLandmark(id);
+    _landmarks[_landmarks.indexOf(landmark)] = landmark.copyWith(
+      isFavorite: isFavorite,
+    );
     notifyListeners();
   }
 

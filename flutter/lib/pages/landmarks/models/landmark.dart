@@ -40,6 +40,18 @@ class Landmark {
       longitude: map['longitude'] as double,
     );
   }
+
+  Landmark copyWith({@required bool isFavorite}) {
+    return Landmark(
+      id: id,
+      name: name,
+      imageName: imageName,
+      state: state,
+      park: park,
+      coordinates: coordinates,
+      isFavorite: isFavorite ?? this.isFavorite,
+    );
+  }
 }
 
 class Coordinates {

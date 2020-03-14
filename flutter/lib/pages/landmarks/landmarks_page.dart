@@ -42,7 +42,7 @@ class LandmarksPage extends StatelessWidget {
             delegate: SliverChildBuilderDelegate(
               (context, index) {
                 final landmark = landmarks[index];
-                return Provider.value(
+                return Provider<Landmark>.value(
                   key: ValueKey(landmark.id),
                   value: landmark,
                   child: const LandmarkRow(),

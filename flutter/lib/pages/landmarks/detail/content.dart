@@ -15,7 +15,7 @@ class Content extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final data = Provider.of<UserData>(context);
-    final landmark = Provider.of<Landmark>(context);
+    final landmark = data.getLandmark(Provider.of<Landmark>(context).id);
     final isFavorite = landmark.isFavorite;
     return Column(
       children: [
