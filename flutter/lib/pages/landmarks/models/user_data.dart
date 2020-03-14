@@ -33,7 +33,7 @@ class UserData extends ChangeNotifier {
   }
 
   Future<void> _loadLandmarks() async {
-    _landmarks.addAll(await DataLoader().load());
+    _landmarks.addAll(await dataLoader.load());
     notifyListeners();
   }
 }
