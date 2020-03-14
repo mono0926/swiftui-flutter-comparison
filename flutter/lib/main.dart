@@ -7,13 +7,19 @@ import 'package:swiftui_flutter/pages/landmarks/models/models.dart';
 import 'pages/pages.dart';
 
 void main() => runApp(
-      RouteObserverProvider(
-        child: App(),
+      MultiProvider(
+        providers: [
+          Provider(create: (context) => DataLoader()),
+          RouteObserverProvider(),
+        ],
+        child: const App(),
       ),
     );
 
 class App extends StatelessWidget {
-  final _pushRoutes = {
+  const App({Key key}) : super(key: key);
+
+  static final _pushRoutes = {
     '/': const HomePage(),
     LandmarksPage.routeName: const LandmarksPage(),
   };
@@ -23,7 +29,12 @@ class App extends StatelessWidget {
     return Theme(
       data: _buildTheme(),
       child: ChangeNotifierProvider(
-        create: (context) => UserData(),
+        create: (context) => UserData(
+          dataLoader: Provider.of(
+            context,
+            listen: false,
+          ),
+        ),
         child: CupertinoApp(
           title: 'Flutter',
           navigatorObservers: [RouteObserverProvider.of(context)],

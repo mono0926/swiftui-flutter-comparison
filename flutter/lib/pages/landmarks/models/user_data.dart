@@ -6,10 +6,13 @@ import 'package:flutter/widgets.dart';
 import 'models.dart';
 
 class UserData extends ChangeNotifier {
-  UserData() {
+  UserData({
+    @required this.dataLoader,
+  }) {
     _loadLandmarks();
   }
 
+  final DataLoader dataLoader;
   bool _showFavoritesOnly = false;
   final _landmarks = <Landmark>[];
 

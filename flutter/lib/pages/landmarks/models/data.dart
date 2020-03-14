@@ -5,14 +5,6 @@ import 'package:flutter/services.dart';
 import 'models.dart';
 
 class DataLoader {
-  factory DataLoader() {
-    return _instance ??= DataLoader._();
-  }
-
-  DataLoader._();
-
-  static DataLoader _instance;
-
   List<Landmark> _loaded;
 
   Future<List<Landmark>> load() async {
