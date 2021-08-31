@@ -2,14 +2,14 @@ name: swiftui_flutter
 description: SwiftUI &#x2F; Flutter Comparison https://developer.apple.com/tutorials/swiftui/creating-and-combining-views
 version: 1.0.0+1
 environment:
-  sdk: ">=2.6.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 dependencies:
+  cupertino_icons:
   flutter:
     sdk: flutter
-  cupertino_icons:
   google_maps_flutter:
-  provider:
   mono_kit:
+  provider:
   route_observer_mixin:
 dev_dependencies:
   flutter_test:

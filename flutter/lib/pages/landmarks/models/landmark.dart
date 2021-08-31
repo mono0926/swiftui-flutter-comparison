@@ -1,15 +1,14 @@
-import 'package:flutter/foundation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class Landmark {
   Landmark({
-    @required this.id,
-    @required this.name,
-    @required this.imageName,
-    @required this.state,
-    @required this.park,
-    @required this.coordinates,
-    this.isFavorite,
+    required this.id,
+    required this.name,
+    required this.imageName,
+    required this.state,
+    required this.park,
+    required this.coordinates,
+    required this.isFavorite,
   });
 
   Landmark.fromJson(Map<String, dynamic> json)
@@ -29,7 +28,7 @@ class Landmark {
   final String state;
   final String park;
   final Coordinates coordinates;
-  bool isFavorite;
+  final bool isFavorite;
 
   LatLng get latLng => LatLng(coordinates.latitude, coordinates.longitude);
 
@@ -41,7 +40,7 @@ class Landmark {
     );
   }
 
-  Landmark copyWith({@required bool isFavorite}) {
+  Landmark copyWith({bool? isFavorite}) {
     return Landmark(
       id: id,
       name: name,
@@ -56,8 +55,8 @@ class Landmark {
 
 class Coordinates {
   const Coordinates({
-    @required this.latitude,
-    @required this.longitude,
+    required this.latitude,
+    required this.longitude,
   });
 
   final double latitude;

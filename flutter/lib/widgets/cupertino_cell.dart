@@ -4,15 +4,15 @@ import 'package:swiftui_flutter/widgets/cupertino_tap_effect.dart';
 
 class CupertinoCell extends StatelessWidget {
   const CupertinoCell({
-    Key key,
-    @required this.child,
+    Key? key,
+    required this.child,
     this.onTap,
     this.minHeight = 44,
     this.horizontalMargin = 15,
   }) : super(key: key);
 
   final Widget child;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final double minHeight;
   final double horizontalMargin;
 

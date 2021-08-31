@@ -7,7 +7,7 @@ import 'landmark_row.dart';
 import 'models/models.dart';
 
 class LandmarksPage extends StatelessWidget {
-  const LandmarksPage();
+  const LandmarksPage({Key? key}) : super(key: key);
 
   static const routeName = '/Landmarks';
 

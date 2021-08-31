@@ -7,7 +7,7 @@ import 'detail/landmark_detail.dart';
 import 'models/models.dart';
 
 class LandmarkRow extends StatelessWidget {
-  const LandmarkRow({Key key}) : super(key: key);
+  const LandmarkRow({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class LandmarkRow extends StatelessWidget {
               Icons.star,
               color: Colors.yellow[700],
             ),
-          Icon(
+          const Icon(
             CupertinoIcons.forward,
             color: Colors.black26,
           )

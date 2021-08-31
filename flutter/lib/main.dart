@@ -17,7 +17,7 @@ void main() => runApp(
     );
 
 class App extends StatelessWidget {
-  const App({Key key}) : super(key: key);
+  const App({Key? key}) : super(key: key);
 
   static final _pushRoutes = {
     '/': const HomePage(),
@@ -39,7 +39,7 @@ class App extends StatelessWidget {
           title: 'Flutter',
           navigatorObservers: [RouteObserverProvider.of(context)],
           onGenerateRoute: (settings) {
-            final routeName = settings.name;
+            final routeName = settings.name!;
             final pushPage = _pushRoutes[routeName];
             if (pushPage != null) {
               final title = routeName.replaceAll('/', '');
@@ -60,10 +60,10 @@ class App extends StatelessWidget {
     final base = ThemeData.light();
     return base.copyWith(
       textTheme: base.textTheme.copyWith(
-        title: base.textTheme.title.copyWith(
+        headline6: base.textTheme.headline6!.copyWith(
           fontSize: 28,
         ),
-        subhead: base.textTheme.subhead.copyWith(
+        subtitle1: base.textTheme.subtitle1!.copyWith(
           fontSize: 16,
         ),
       ),

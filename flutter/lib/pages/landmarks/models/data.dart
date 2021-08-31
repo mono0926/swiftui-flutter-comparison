@@ -5,11 +5,12 @@ import 'package:flutter/services.dart';
 import 'models.dart';
 
 class DataLoader {
-  List<Landmark> _loaded;
+  List<Landmark>? _loaded;
 
   Future<List<Landmark>> load() async {
-    if (_loaded != null) {
-      return _loaded;
+    final loaded = _loaded;
+    if (loaded != null) {
+      return loaded;
     }
     final json = await rootBundle.loadString('assets/landmarkData.json');
     final decoded = (jsonDecode(json) as List).cast<Map<String, dynamic>>();

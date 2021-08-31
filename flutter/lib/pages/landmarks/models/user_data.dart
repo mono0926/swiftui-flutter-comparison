@@ -7,7 +7,7 @@ import 'models.dart';
 
 class UserData extends ChangeNotifier {
   UserData({
-    @required this.dataLoader,
+    required this.dataLoader,
   }) {
     _loadLandmarks();
   }
@@ -22,12 +22,12 @@ class UserData extends ChangeNotifier {
 
   Landmark getLandmark(int id) => _landmarks.firstWhere((l) => l.id == id);
 
-  void updateShowFavoritesOnly({@required bool favoritesOnly}) {
+  void updateShowFavoritesOnly({required bool favoritesOnly}) {
     _showFavoritesOnly = favoritesOnly;
     notifyListeners();
   }
 
-  void updateIsFavorite(int id, {@required bool isFavorite}) {
+  void updateIsFavorite(int id, {required bool isFavorite}) {
     final landmark = getLandmark(id);
     _landmarks[_landmarks.indexOf(landmark)] = landmark.copyWith(
       isFavorite: isFavorite,

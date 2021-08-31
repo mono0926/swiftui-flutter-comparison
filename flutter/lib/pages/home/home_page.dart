@@ -5,7 +5,7 @@ import 'package:swiftui_flutter/widgets/widgets.dart';
 import '../pages.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage();
+  const HomePage({Key? key}) : super(key: key);
 
   static const _pages = [
     LandmarksPage.routeName,
@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
 
 class _ListItem extends StatelessWidget {
   const _ListItem({
-    @required this.routeName,
+    required this.routeName,
   });
 
   final String routeName;
@@ -41,7 +41,7 @@ class _ListItem extends StatelessWidget {
       child: Row(
         children: [
           Expanded(child: Text(routeName.replaceAll('/', ''))),
-          Icon(
+          const Icon(
             CupertinoIcons.forward,
             color: Colors.black26,
           ),

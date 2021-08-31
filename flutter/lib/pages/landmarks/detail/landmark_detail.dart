@@ -5,7 +5,7 @@ import 'package:swiftui_flutter/pages/landmarks/models/models.dart';
 import 'content.dart';
 
 class LandmarkDetail extends StatelessWidget {
-  const LandmarkDetail();
+  const LandmarkDetail({Key? key}) : super(key: key);
 
   static const routeName = 'LandmarkDetail';
   @override

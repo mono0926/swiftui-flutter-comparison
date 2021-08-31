@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -9,7 +7,7 @@ import 'circle_image.dart';
 import 'map_view.dart';
 
 class Content extends StatelessWidget {
-  const Content();
+  const Content({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +19,7 @@ class Content extends StatelessWidget {
       children: [
         Stack(
           alignment: Alignment.bottomCenter,
-          overflow: Overflow.visible,
+          clipBehavior: Clip.none,
           children: [
             SizedBox(
               height: 300,
@@ -43,7 +41,7 @@ class Content extends StatelessWidget {
                 children: [
                   Text(
                     landmark.name,
-                    style: textTheme.title,
+                    style: textTheme.headline6,
                   ),
                   CupertinoButton(
                     onPressed: () {
@@ -64,7 +62,7 @@ class Content extends StatelessWidget {
                   Expanded(
                     child: Text(
                       landmark.park,
-                      style: textTheme.subhead,
+                      style: textTheme.subtitle1,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -72,7 +70,7 @@ class Content extends StatelessWidget {
                   const SizedBox(width: 4),
                   Text(
                     landmark.state,
-                    style: textTheme.subhead,
+                    style: textTheme.subtitle1,
                   ),
                 ],
               )

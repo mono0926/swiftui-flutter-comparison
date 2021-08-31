@@ -3,8 +3,9 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapView extends StatelessWidget {
   const MapView({
-    @required this.latLng,
-  });
+    Key? key,
+    required this.latLng,
+  }) : super(key: key);
 
   final LatLng latLng;
 
