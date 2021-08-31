@@ -1,42 +1,41 @@
-import 'dart:collection';
-
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'models.dart';
 
-class UserData extends ChangeNotifier {
-  UserData({
-    required this.dataLoader,
-  }) {
-    _loadLandmarks();
-  }
+final showFavoritesOnlyProvider = StateProvider((ref) => false);
 
-  final DataLoader dataLoader;
-  bool _showFavoritesOnly = false;
-  final _landmarks = <Landmark>[];
+final favoriteController =
+    StateNotifierProvider<FavoriteController, Map<int, bool>>(
+  (ref) => FavoriteController(),
+);
 
-  bool get showFavoritesOnly => _showFavoritesOnly;
-  UnmodifiableListView<Landmark> get landmarks => UnmodifiableListView(
-      showFavoritesOnly ? _landmarks.where((l) => l.isFavorite) : _landmarks);
+class FavoriteController extends StateNotifier<Map<int, bool>> {
+  FavoriteController() : super({});
 
-  Landmark getLandmark(int id) => _landmarks.firstWhere((l) => l.id == id);
-
-  void updateShowFavoritesOnly({required bool favoritesOnly}) {
-    _showFavoritesOnly = favoritesOnly;
-    notifyListeners();
-  }
-
-  void updateIsFavorite(int id, {required bool isFavorite}) {
-    final landmark = getLandmark(id);
-    _landmarks[_landmarks.indexOf(landmark)] = landmark.copyWith(
-      isFavorite: isFavorite,
-    );
-    notifyListeners();
-  }
-
-  Future<void> _loadLandmarks() async {
-    _landmarks.addAll(await dataLoader.load());
-    notifyListeners();
+  void update({required int id, required bool isFavorite}) {
+    state = {
+      ...state,
+      id: isFavorite,
+    };
   }
 }
+
+final isFavoriteProviders = Provider.family((ref, int id) {
+  final favoriteMap = ref.watch(favoriteController);
+  return favoriteMap.containsKey(id);
+});
+
+final landmarkProviders = Provider.family((ref, int id) {
+  return (ref.watch(landmarkDataProvider).data?.value ?? [])
+      .firstWhere((l) => l.id == id);
+});
+
+final landmarkListProvider = Provider((ref) {
+  final landmarks = ref.watch(landmarkDataProvider).data?.value ?? [];
+  final showFavoritesOnly = ref.watch(showFavoritesOnlyProvider).state;
+  final favoriteMap = ref.watch(favoriteController);
+
+  return showFavoritesOnly
+      ? landmarks.where((l) => favoriteMap.containsKey(l.id)).toList()
+      : landmarks;
+});

@@ -1,20 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:swiftui_flutter/widgets/widgets.dart';
 
 import 'landmark_row.dart';
 import 'models/models.dart';
 
-class LandmarksPage extends StatelessWidget {
+class LandmarksPage extends ConsumerWidget {
   const LandmarksPage({Key? key}) : super(key: key);
 
   static const routeName = '/Landmarks';
 
   @override
-  Widget build(BuildContext context) {
-    final data = Provider.of<UserData>(context);
-    final landmarks = data.landmarks;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final landmarks = ref.watch(landmarkListProvider);
     return CupertinoPageScaffold(
       child: CustomScrollView(
         slivers: [
@@ -28,9 +27,9 @@ class LandmarksPage extends StatelessWidget {
                     children: [
                       const Text('Favorites only'),
                       CupertinoSwitch(
-                        value: data.showFavoritesOnly,
+                        value: ref.watch(showFavoritesOnlyProvider).state,
                         onChanged: (value) =>
-                            data.updateShowFavoritesOnly(favoritesOnly: value),
+                            ref.read(showFavoritesOnlyProvider).state = value,
                       ),
                     ],
                   ),
@@ -42,11 +41,7 @@ class LandmarksPage extends StatelessWidget {
             delegate: SliverChildBuilderDelegate(
               (context, index) {
                 final landmark = landmarks[index];
-                return Provider<Landmark>.value(
-                  key: ValueKey(landmark.id),
-                  value: landmark,
-                  child: const LandmarkRow(),
-                );
+                return LandmarkRow(id: landmark.id);
               },
               childCount: landmarks.length,
             ),

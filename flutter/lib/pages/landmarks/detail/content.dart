@@ -1,20 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:swiftui_flutter/pages/landmarks/detail/landmark_detail.dart';
 
 import '../models/models.dart';
 import 'circle_image.dart';
 import 'map_view.dart';
 
-class Content extends StatelessWidget {
+class Content extends ConsumerWidget {
   const Content({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final textTheme = Theme.of(context).textTheme;
-    final data = Provider.of<UserData>(context);
-    final landmark = data.getLandmark(Provider.of<Landmark>(context).id);
-    final isFavorite = landmark.isFavorite;
+    final id = ref.watch(selectedLandmarkId).state!;
+    final landmark = ref.watch(landmarkProviders(id));
+    final isFavorite = ref.watch(isFavoriteProviders(id));
     return Column(
       children: [
         Stack(
@@ -45,10 +46,10 @@ class Content extends StatelessWidget {
                   ),
                   CupertinoButton(
                     onPressed: () {
-                      data.updateIsFavorite(
-                        landmark.id,
-                        isFavorite: !isFavorite,
-                      );
+                      ref.read(favoriteController.notifier).update(
+                            id: id,
+                            isFavorite: !isFavorite,
+                          );
                     },
                     child: Icon(
                       isFavorite ? Icons.star : Icons.star_border,

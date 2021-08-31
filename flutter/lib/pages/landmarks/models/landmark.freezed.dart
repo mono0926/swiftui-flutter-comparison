@@ -27,8 +27,7 @@ class _$LandmarkTearOff {
       required String imageName,
       required String state,
       required String park,
-      required Coordinates coordinates,
-      required bool isFavorite}) {
+      required Coordinates coordinates}) {
     return _Landmark(
       id: id,
       name: name,
@@ -36,7 +35,6 @@ class _$LandmarkTearOff {
       state: state,
       park: park,
       coordinates: coordinates,
-      isFavorite: isFavorite,
     );
   }
 
@@ -56,7 +54,6 @@ mixin _$Landmark {
   String get state => throw _privateConstructorUsedError;
   String get park => throw _privateConstructorUsedError;
   Coordinates get coordinates => throw _privateConstructorUsedError;
-  bool get isFavorite => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -74,8 +71,7 @@ abstract class $LandmarkCopyWith<$Res> {
       String imageName,
       String state,
       String park,
-      Coordinates coordinates,
-      bool isFavorite});
+      Coordinates coordinates});
 
   $CoordinatesCopyWith<$Res> get coordinates;
 }
@@ -96,7 +92,6 @@ class _$LandmarkCopyWithImpl<$Res> implements $LandmarkCopyWith<$Res> {
     Object? state = freezed,
     Object? park = freezed,
     Object? coordinates = freezed,
-    Object? isFavorite = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -123,10 +118,6 @@ class _$LandmarkCopyWithImpl<$Res> implements $LandmarkCopyWith<$Res> {
           ? _value.coordinates
           : coordinates // ignore: cast_nullable_to_non_nullable
               as Coordinates,
-      isFavorite: isFavorite == freezed
-          ? _value.isFavorite
-          : isFavorite // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 
@@ -149,8 +140,7 @@ abstract class _$LandmarkCopyWith<$Res> implements $LandmarkCopyWith<$Res> {
       String imageName,
       String state,
       String park,
-      Coordinates coordinates,
-      bool isFavorite});
+      Coordinates coordinates});
 
   @override
   $CoordinatesCopyWith<$Res> get coordinates;
@@ -173,7 +163,6 @@ class __$LandmarkCopyWithImpl<$Res> extends _$LandmarkCopyWithImpl<$Res>
     Object? state = freezed,
     Object? park = freezed,
     Object? coordinates = freezed,
-    Object? isFavorite = freezed,
   }) {
     return _then(_Landmark(
       id: id == freezed
@@ -200,10 +189,6 @@ class __$LandmarkCopyWithImpl<$Res> extends _$LandmarkCopyWithImpl<$Res>
           ? _value.coordinates
           : coordinates // ignore: cast_nullable_to_non_nullable
               as Coordinates,
-      isFavorite: isFavorite == freezed
-          ? _value.isFavorite
-          : isFavorite // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -217,8 +202,7 @@ class _$_Landmark extends _Landmark {
       required this.imageName,
       required this.state,
       required this.park,
-      required this.coordinates,
-      required this.isFavorite})
+      required this.coordinates})
       : super._();
 
   factory _$_Landmark.fromJson(Map<String, dynamic> json) =>
@@ -236,12 +220,10 @@ class _$_Landmark extends _Landmark {
   final String park;
   @override
   final Coordinates coordinates;
-  @override
-  final bool isFavorite;
 
   @override
   String toString() {
-    return 'Landmark(id: $id, name: $name, imageName: $imageName, state: $state, park: $park, coordinates: $coordinates, isFavorite: $isFavorite)';
+    return 'Landmark(id: $id, name: $name, imageName: $imageName, state: $state, park: $park, coordinates: $coordinates)';
   }
 
   @override
@@ -261,10 +243,7 @@ class _$_Landmark extends _Landmark {
                 const DeepCollectionEquality().equals(other.park, park)) &&
             (identical(other.coordinates, coordinates) ||
                 const DeepCollectionEquality()
-                    .equals(other.coordinates, coordinates)) &&
-            (identical(other.isFavorite, isFavorite) ||
-                const DeepCollectionEquality()
-                    .equals(other.isFavorite, isFavorite)));
+                    .equals(other.coordinates, coordinates)));
   }
 
   @override
@@ -275,8 +254,7 @@ class _$_Landmark extends _Landmark {
       const DeepCollectionEquality().hash(imageName) ^
       const DeepCollectionEquality().hash(state) ^
       const DeepCollectionEquality().hash(park) ^
-      const DeepCollectionEquality().hash(coordinates) ^
-      const DeepCollectionEquality().hash(isFavorite);
+      const DeepCollectionEquality().hash(coordinates);
 
   @JsonKey(ignore: true)
   @override
@@ -296,8 +274,7 @@ abstract class _Landmark extends Landmark {
       required String imageName,
       required String state,
       required String park,
-      required Coordinates coordinates,
-      required bool isFavorite}) = _$_Landmark;
+      required Coordinates coordinates}) = _$_Landmark;
   _Landmark._() : super._();
 
   factory _Landmark.fromJson(Map<String, dynamic> json) = _$_Landmark.fromJson;
@@ -314,8 +291,6 @@ abstract class _Landmark extends Landmark {
   String get park => throw _privateConstructorUsedError;
   @override
   Coordinates get coordinates => throw _privateConstructorUsedError;
-  @override
-  bool get isFavorite => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$LandmarkCopyWith<_Landmark> get copyWith =>

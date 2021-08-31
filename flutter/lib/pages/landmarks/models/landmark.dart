@@ -13,7 +13,6 @@ class Landmark with _$Landmark {
     required String state,
     required String park,
     required Coordinates coordinates,
-    required bool isFavorite,
   }) = _Landmark;
   Landmark._();
 

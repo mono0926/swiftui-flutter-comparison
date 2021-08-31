@@ -14,7 +14,6 @@ _$_Landmark _$$_LandmarkFromJson(Map<String, dynamic> json) => _$_Landmark(
       park: json['park'] as String,
       coordinates:
           Coordinates.fromJson(json['coordinates'] as Map<String, dynamic>),
-      isFavorite: json['isFavorite'] as bool,
     );
 
 Map<String, dynamic> _$$_LandmarkToJson(_$_Landmark instance) =>
@@ -25,7 +24,6 @@ Map<String, dynamic> _$$_LandmarkToJson(_$_Landmark instance) =>
       'state': instance.state,
       'park': instance.park,
       'coordinates': instance.coordinates,
-      'isFavorite': instance.isFavorite,
     };
 
 _$_Coordinates _$$_CoordinatesFromJson(Map<String, dynamic> json) =>

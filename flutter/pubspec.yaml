@@ -7,6 +7,7 @@ dependencies:
   cupertino_icons:
   flutter:
     sdk: flutter
+  flutter_riverpod: '>=1.0.0-0'
   freezed_annotation:
   google_maps_flutter:
   mono_kit:
