@@ -1,64 +1,35 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class Landmark {
-  Landmark({
-    required this.id,
-    required this.name,
-    required this.imageName,
-    required this.state,
-    required this.park,
-    required this.coordinates,
-    required this.isFavorite,
-  });
+part 'landmark.freezed.dart';
+part 'landmark.g.dart';
 
-  Landmark.fromJson(Map<String, dynamic> json)
-      : this(
-          id: json['id'] as int,
-          name: json['name'] as String,
-          imageName: json['imageName'] as String,
-          park: json['park'] as String,
-          state: json['state'] as String,
-          coordinates: _parseCoordinates(json['coordinates']),
-          isFavorite: json['isFavorite'] as bool,
-        );
+@freezed
+class Landmark with _$Landmark {
+  factory Landmark({
+    required int id,
+    required String name,
+    required String imageName,
+    required String state,
+    required String park,
+    required Coordinates coordinates,
+    required bool isFavorite,
+  }) = _Landmark;
+  Landmark._();
 
-  final int id;
-  final String name;
-  final String imageName;
-  final String state;
-  final String park;
-  final Coordinates coordinates;
-  final bool isFavorite;
+  factory Landmark.fromJson(Map<String, dynamic> json) =>
+      _$LandmarkFromJson(json);
 
-  LatLng get latLng => LatLng(coordinates.latitude, coordinates.longitude);
-
-  static Coordinates _parseCoordinates(dynamic json) {
-    final map = (json as Map).cast<String, dynamic>();
-    return Coordinates(
-      latitude: map['latitude'] as double,
-      longitude: map['longitude'] as double,
-    );
-  }
-
-  Landmark copyWith({bool? isFavorite}) {
-    return Landmark(
-      id: id,
-      name: name,
-      imageName: imageName,
-      state: state,
-      park: park,
-      coordinates: coordinates,
-      isFavorite: isFavorite ?? this.isFavorite,
-    );
-  }
+  late final LatLng latLng = LatLng(
+    coordinates.latitude,
+    coordinates.longitude,
+  );
 }
 
-class Coordinates {
-  const Coordinates({
-    required this.latitude,
-    required this.longitude,
-  });
-
-  final double latitude;
-  final double longitude;
+@freezed
+class Coordinates with _$Coordinates {
+  const factory Coordinates(
+      {required double latitude, required double longitude}) = _Coordinates;
+  factory Coordinates.fromJson(Map<String, dynamic> json) =>
+      _$CoordinatesFromJson(json);
 }
