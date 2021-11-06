@@ -18,7 +18,7 @@ class LandmarkRow extends ConsumerWidget {
     final landmark = ref.watch(landmarkProviders(id));
     return CupertinoCell(
       onTap: () {
-        ref.read(selectedLandmarkId).state = id;
+        ref.read(selectedLandmarkId.notifier).state = id;
         Navigator.of(context).push<void>(
           CupertinoPageRoute<void>(
             builder: (context) {

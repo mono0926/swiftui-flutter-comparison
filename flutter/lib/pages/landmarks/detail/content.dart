@@ -13,7 +13,7 @@ class Content extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final textTheme = Theme.of(context).textTheme;
-    final id = ref.watch(selectedLandmarkId).state!;
+    final id = ref.watch(selectedLandmarkId)!;
     final landmark = ref.watch(landmarkProviders(id));
     final isFavorite = ref.watch(isFavoriteProviders(id));
     return Column(

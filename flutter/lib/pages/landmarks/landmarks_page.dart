@@ -27,9 +27,10 @@ class LandmarksPage extends ConsumerWidget {
                     children: [
                       const Text('Favorites only'),
                       CupertinoSwitch(
-                        value: ref.watch(showFavoritesOnlyProvider).state,
-                        onChanged: (value) =>
-                            ref.read(showFavoritesOnlyProvider).state = value,
+                        value: ref.watch(showFavoritesOnlyProvider),
+                        onChanged: (value) => ref
+                            .read(showFavoritesOnlyProvider.notifier)
+                            .state = value,
                       ),
                     ],
                   ),

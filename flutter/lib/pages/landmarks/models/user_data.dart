@@ -26,13 +26,13 @@ final isFavoriteProviders = Provider.family((ref, int id) {
 });
 
 final landmarkProviders = Provider.family((ref, int id) {
-  return (ref.watch(landmarkDataProvider).data?.value ?? [])
+  return (ref.watch(landmarkDataProvider).value ?? [])
       .firstWhere((l) => l.id == id);
 });
 
 final landmarkListProvider = Provider((ref) {
-  final landmarks = ref.watch(landmarkDataProvider).data?.value ?? [];
-  final showFavoritesOnly = ref.watch(showFavoritesOnlyProvider).state;
+  final landmarks = ref.watch(landmarkDataProvider).value ?? [];
+  final showFavoritesOnly = ref.watch(showFavoritesOnlyProvider);
   final favoriteMap = ref.watch(favoriteController);
 
   return showFavoritesOnly
