@@ -5,7 +5,7 @@ import 'package:swiftui_flutter/widgets/widgets.dart';
 import '../pages.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   static const _pages = [
     LandmarksPage.routeName,

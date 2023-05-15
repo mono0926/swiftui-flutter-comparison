@@ -19,7 +19,7 @@ void main() => runApp(
     );
 
 class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
+  const App({super.key});
 
   static final _pushRoutes = {
     '/': const HomePage(),
@@ -55,10 +55,10 @@ class App extends StatelessWidget {
     return base
         .copyWith(
           textTheme: base.textTheme.copyWith(
-            headline6: base.textTheme.headline6!.copyWith(
+            titleLarge: base.textTheme.titleLarge!.copyWith(
               fontSize: 28,
             ),
-            subtitle1: base.textTheme.subtitle1!.copyWith(
+            titleMedium: base.textTheme.titleMedium!.copyWith(
               fontSize: 16,
             ),
           ),

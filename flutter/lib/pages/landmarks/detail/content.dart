@@ -8,7 +8,7 @@ import 'circle_image.dart';
 import 'map_view.dart';
 
 class Content extends ConsumerWidget {
-  const Content({Key? key}) : super(key: key);
+  const Content({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -42,7 +42,7 @@ class Content extends ConsumerWidget {
                 children: [
                   Text(
                     landmark.name,
-                    style: textTheme.headline6,
+                    style: textTheme.titleLarge,
                   ),
                   CupertinoButton(
                     onPressed: () {
@@ -63,7 +63,7 @@ class Content extends ConsumerWidget {
                   Expanded(
                     child: Text(
                       landmark.park,
-                      style: textTheme.subtitle1,
+                      style: textTheme.titleMedium,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -71,7 +71,7 @@ class Content extends ConsumerWidget {
                   const SizedBox(width: 4),
                   Text(
                     landmark.state,
-                    style: textTheme.subtitle1,
+                    style: textTheme.titleMedium,
                   ),
                 ],
               )

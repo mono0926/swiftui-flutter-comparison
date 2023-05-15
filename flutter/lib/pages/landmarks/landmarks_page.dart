@@ -6,7 +6,7 @@ import 'landmark_row.dart';
 import 'models/models.dart';
 
 class LandmarksPage extends ConsumerWidget {
-  const LandmarksPage({Key? key}) : super(key: key);
+  const LandmarksPage({super.key});
 
   static const routeName = '/Landmarks';
 

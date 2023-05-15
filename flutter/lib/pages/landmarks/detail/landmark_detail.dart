@@ -7,7 +7,7 @@ import 'content.dart';
 final selectedLandmarkId = StateProvider<int?>((ref) => null);
 
 class LandmarkDetail extends ConsumerWidget {
-  const LandmarkDetail({Key? key}) : super(key: key);
+  const LandmarkDetail({super.key});
 
   static const routeName = 'LandmarkDetail';
   @override

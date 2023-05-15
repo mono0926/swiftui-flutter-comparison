@@ -3,12 +3,12 @@ import 'package:swiftui_flutter/widgets/cupertino_tap_effect.dart';
 
 class CupertinoCell extends StatelessWidget {
   const CupertinoCell({
-    Key? key,
+    super.key,
     required this.child,
     this.onTap,
     this.minHeight = 44,
     this.horizontalMargin = 15,
-  }) : super(key: key);
+  });
 
   final Widget child;
   final VoidCallback? onTap;
@@ -24,7 +24,7 @@ class CupertinoCell extends StatelessWidget {
         constraints: BoxConstraints(minHeight: minHeight),
         child: Padding(
           padding: EdgeInsets.only(left: horizontalMargin),
-          child: Container(
+          child: DecoratedBox(
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(

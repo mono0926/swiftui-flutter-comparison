@@ -3,16 +3,16 @@ import 'package:route_observer_mixin/route_observer_mixin.dart';
 
 class CupertinoTapEffect extends StatefulWidget {
   const CupertinoTapEffect({
-    Key? key,
+    super.key,
     required this.child,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   final VoidCallback? onTap;
   final Widget child;
 
   @override
-  _CupertinoTapEffectState createState() => _CupertinoTapEffectState();
+  State<CupertinoTapEffect> createState() => _CupertinoTapEffectState();
 }
 
 class _CupertinoTapEffectState extends State<CupertinoTapEffect>
