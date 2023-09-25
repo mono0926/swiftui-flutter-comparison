@@ -47,7 +47,7 @@ class LandmarkRow extends ConsumerWidget {
           const Icon(
             CupertinoIcons.forward,
             color: Colors.black26,
-          )
+          ),
         ],
       ),
     );

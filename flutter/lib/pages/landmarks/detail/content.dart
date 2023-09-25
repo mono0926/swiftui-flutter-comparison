@@ -74,7 +74,7 @@ class Content extends ConsumerWidget {
                     style: textTheme.titleMedium,
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),
