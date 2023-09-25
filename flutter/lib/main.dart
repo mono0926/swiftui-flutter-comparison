@@ -30,16 +30,12 @@ class App extends StatelessWidget {
         ),
         onGenerateRoute: (settings) {
           final routeName = settings.name!;
-          final route = _routes[routeName];
-          if (route != null) {
-            final title = routeName.replaceAll('/', '');
-            return CupertinoPageRoute<void>(
-              settings: settings,
-              builder: (context) => route,
-              title: title.isEmpty ? 'Flutter' : title,
-            );
-          }
-          return null;
+          final title = routeName.replaceAll('/', '');
+          return CupertinoPageRoute<void>(
+            title: title.isEmpty ? 'Flutter' : title,
+            settings: settings,
+            builder: (context) => _routes[routeName]!,
+          );
         },
       ),
     );
