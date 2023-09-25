@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'models.dart';
 
+// TODO(mono): Use riverpod_generator
 final showFavoritesOnlyProvider = StateProvider((ref) => false);
 
 final favoriteController =
