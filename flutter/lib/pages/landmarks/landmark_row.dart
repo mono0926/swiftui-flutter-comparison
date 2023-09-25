@@ -14,32 +14,35 @@ class LandmarkRow extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final landmark = ref.watch(landmarkProviders(id));
-    return CupertinoListTile(
-      onTap: () {
-        ref.read(selectedLandmarkId.notifier).state = id;
-        Navigator.of(context).push<void>(
-          CupertinoPageRoute<void>(
-            title: LandmarkDetail.routeName,
-            builder: (context) {
-              return const LandmarkDetail();
+    final landmark = ref.watch(landmarkProviderFamily(id)).value;
+    return landmark == null
+        ? const SizedBox.shrink()
+        : CupertinoListTile(
+            onTap: () {
+              ref.read(selectedLandmarkId.notifier).state = id;
+              Navigator.of(context).push<void>(
+                CupertinoPageRoute<void>(
+                  title: LandmarkDetail.routeName,
+                  builder: (context) {
+                    return const LandmarkDetail();
+                  },
+                ),
+              );
             },
-          ),
-        );
-      },
-      leading: Image.asset('assets/${landmark.imageName}.jpg'),
-      leadingSize: 50,
-      trailing: Row(
-        children: [
-          if (ref.watch(favoriteController.select((s) => s.containsKey(id))))
-            Icon(
-              Icons.star,
-              color: Colors.yellow[700],
+            leading: Image.asset('assets/${landmark.imageName}.jpg'),
+            leadingSize: 50,
+            trailing: Row(
+              children: [
+                if (ref
+                    .watch(favoriteProvider.select((s) => s.containsKey(id))))
+                  Icon(
+                    Icons.star,
+                    color: Colors.yellow[700],
+                  ),
+                const CupertinoListTileChevron(),
+              ],
             ),
-          const CupertinoListTileChevron(),
-        ],
-      ),
-      title: Text(landmark.name),
-    );
+            title: Text(landmark.name),
+          );
   }
 }

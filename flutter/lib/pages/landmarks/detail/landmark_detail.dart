@@ -13,7 +13,7 @@ class LandmarkDetail extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final id = ref.watch(selectedLandmarkId)!;
-    final landmark = ref.watch(landmarkProviders(id));
+    final landmark = ref.watch(landmarkProviderFamily(id)).value!;
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: Text(landmark.name),

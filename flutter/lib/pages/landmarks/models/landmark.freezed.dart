@@ -1,6 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'landmark.dart';
 
@@ -11,40 +12,11 @@ part of 'landmark.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Landmark _$LandmarkFromJson(Map<String, dynamic> json) {
   return _Landmark.fromJson(json);
 }
-
-/// @nodoc
-class _$LandmarkTearOff {
-  const _$LandmarkTearOff();
-
-  _Landmark call(
-      {required int id,
-      required String name,
-      required String imageName,
-      required String state,
-      required String park,
-      required Coordinates coordinates}) {
-    return _Landmark(
-      id: id,
-      name: name,
-      imageName: imageName,
-      state: state,
-      park: park,
-      coordinates: coordinates,
-    );
-  }
-
-  Landmark fromJson(Map<String, Object> json) {
-    return Landmark.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Landmark = _$LandmarkTearOff();
 
 /// @nodoc
 mixin _$Landmark {
@@ -64,7 +36,8 @@ mixin _$Landmark {
 /// @nodoc
 abstract class $LandmarkCopyWith<$Res> {
   factory $LandmarkCopyWith(Landmark value, $Res Function(Landmark) then) =
-      _$LandmarkCopyWithImpl<$Res>;
+      _$LandmarkCopyWithImpl<$Res, Landmark>;
+  @useResult
   $Res call(
       {int id,
       String name,
@@ -77,63 +50,69 @@ abstract class $LandmarkCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$LandmarkCopyWithImpl<$Res> implements $LandmarkCopyWith<$Res> {
+class _$LandmarkCopyWithImpl<$Res, $Val extends Landmark>
+    implements $LandmarkCopyWith<$Res> {
   _$LandmarkCopyWithImpl(this._value, this._then);
 
-  final Landmark _value;
   // ignore: unused_field
-  final $Res Function(Landmark) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? imageName = freezed,
-    Object? state = freezed,
-    Object? park = freezed,
-    Object? coordinates = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? imageName = null,
+    Object? state = null,
+    Object? park = null,
+    Object? coordinates = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      imageName: imageName == freezed
+      imageName: null == imageName
           ? _value.imageName
           : imageName // ignore: cast_nullable_to_non_nullable
               as String,
-      state: state == freezed
+      state: null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
               as String,
-      park: park == freezed
+      park: null == park
           ? _value.park
           : park // ignore: cast_nullable_to_non_nullable
               as String,
-      coordinates: coordinates == freezed
+      coordinates: null == coordinates
           ? _value.coordinates
           : coordinates // ignore: cast_nullable_to_non_nullable
               as Coordinates,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $CoordinatesCopyWith<$Res> get coordinates {
     return $CoordinatesCopyWith<$Res>(_value.coordinates, (value) {
-      return _then(_value.copyWith(coordinates: value));
+      return _then(_value.copyWith(coordinates: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$LandmarkCopyWith<$Res> implements $LandmarkCopyWith<$Res> {
-  factory _$LandmarkCopyWith(_Landmark value, $Res Function(_Landmark) then) =
-      __$LandmarkCopyWithImpl<$Res>;
+abstract class _$$_LandmarkCopyWith<$Res> implements $LandmarkCopyWith<$Res> {
+  factory _$$_LandmarkCopyWith(
+          _$_Landmark value, $Res Function(_$_Landmark) then) =
+      __$$_LandmarkCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int id,
       String name,
@@ -147,45 +126,45 @@ abstract class _$LandmarkCopyWith<$Res> implements $LandmarkCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$LandmarkCopyWithImpl<$Res> extends _$LandmarkCopyWithImpl<$Res>
-    implements _$LandmarkCopyWith<$Res> {
-  __$LandmarkCopyWithImpl(_Landmark _value, $Res Function(_Landmark) _then)
-      : super(_value, (v) => _then(v as _Landmark));
+class __$$_LandmarkCopyWithImpl<$Res>
+    extends _$LandmarkCopyWithImpl<$Res, _$_Landmark>
+    implements _$$_LandmarkCopyWith<$Res> {
+  __$$_LandmarkCopyWithImpl(
+      _$_Landmark _value, $Res Function(_$_Landmark) _then)
+      : super(_value, _then);
 
-  @override
-  _Landmark get _value => super._value as _Landmark;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? imageName = freezed,
-    Object? state = freezed,
-    Object? park = freezed,
-    Object? coordinates = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? imageName = null,
+    Object? state = null,
+    Object? park = null,
+    Object? coordinates = null,
   }) {
-    return _then(_Landmark(
-      id: id == freezed
+    return _then(_$_Landmark(
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      imageName: imageName == freezed
+      imageName: null == imageName
           ? _value.imageName
           : imageName // ignore: cast_nullable_to_non_nullable
               as String,
-      state: state == freezed
+      state: null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
               as String,
-      park: park == freezed
+      park: null == park
           ? _value.park
           : park // ignore: cast_nullable_to_non_nullable
               as String,
-      coordinates: coordinates == freezed
+      coordinates: null == coordinates
           ? _value.coordinates
           : coordinates // ignore: cast_nullable_to_non_nullable
               as Coordinates,
@@ -229,96 +208,70 @@ class _$_Landmark extends _Landmark {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Landmark &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
+        (other.runtimeType == runtimeType &&
+            other is _$_Landmark &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.imageName, imageName) ||
-                const DeepCollectionEquality()
-                    .equals(other.imageName, imageName)) &&
-            (identical(other.state, state) ||
-                const DeepCollectionEquality().equals(other.state, state)) &&
-            (identical(other.park, park) ||
-                const DeepCollectionEquality().equals(other.park, park)) &&
+                other.imageName == imageName) &&
+            (identical(other.state, state) || other.state == state) &&
+            (identical(other.park, park) || other.park == park) &&
             (identical(other.coordinates, coordinates) ||
-                const DeepCollectionEquality()
-                    .equals(other.coordinates, coordinates)));
+                other.coordinates == coordinates));
   }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(imageName) ^
-      const DeepCollectionEquality().hash(state) ^
-      const DeepCollectionEquality().hash(park) ^
-      const DeepCollectionEquality().hash(coordinates);
 
   @JsonKey(ignore: true)
   @override
-  _$LandmarkCopyWith<_Landmark> get copyWith =>
-      __$LandmarkCopyWithImpl<_Landmark>(this, _$identity);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, imageName, state, park, coordinates);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_LandmarkCopyWith<_$_Landmark> get copyWith =>
+      __$$_LandmarkCopyWithImpl<_$_Landmark>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LandmarkToJson(this);
+    return _$$_LandmarkToJson(
+      this,
+    );
   }
 }
 
 abstract class _Landmark extends Landmark {
   factory _Landmark(
-      {required int id,
-      required String name,
-      required String imageName,
-      required String state,
-      required String park,
-      required Coordinates coordinates}) = _$_Landmark;
+      {required final int id,
+      required final String name,
+      required final String imageName,
+      required final String state,
+      required final String park,
+      required final Coordinates coordinates}) = _$_Landmark;
   _Landmark._() : super._();
 
   factory _Landmark.fromJson(Map<String, dynamic> json) = _$_Landmark.fromJson;
 
   @override
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String get imageName => throw _privateConstructorUsedError;
+  String get imageName;
   @override
-  String get state => throw _privateConstructorUsedError;
+  String get state;
   @override
-  String get park => throw _privateConstructorUsedError;
+  String get park;
   @override
-  Coordinates get coordinates => throw _privateConstructorUsedError;
+  Coordinates get coordinates;
   @override
   @JsonKey(ignore: true)
-  _$LandmarkCopyWith<_Landmark> get copyWith =>
+  _$$_LandmarkCopyWith<_$_Landmark> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 Coordinates _$CoordinatesFromJson(Map<String, dynamic> json) {
   return _Coordinates.fromJson(json);
 }
-
-/// @nodoc
-class _$CoordinatesTearOff {
-  const _$CoordinatesTearOff();
-
-  _Coordinates call({required double latitude, required double longitude}) {
-    return _Coordinates(
-      latitude: latitude,
-      longitude: longitude,
-    );
-  }
-
-  Coordinates fromJson(Map<String, Object> json) {
-    return Coordinates.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Coordinates = _$CoordinatesTearOff();
 
 /// @nodoc
 mixin _$Coordinates {
@@ -335,67 +288,71 @@ mixin _$Coordinates {
 abstract class $CoordinatesCopyWith<$Res> {
   factory $CoordinatesCopyWith(
           Coordinates value, $Res Function(Coordinates) then) =
-      _$CoordinatesCopyWithImpl<$Res>;
+      _$CoordinatesCopyWithImpl<$Res, Coordinates>;
+  @useResult
   $Res call({double latitude, double longitude});
 }
 
 /// @nodoc
-class _$CoordinatesCopyWithImpl<$Res> implements $CoordinatesCopyWith<$Res> {
+class _$CoordinatesCopyWithImpl<$Res, $Val extends Coordinates>
+    implements $CoordinatesCopyWith<$Res> {
   _$CoordinatesCopyWithImpl(this._value, this._then);
 
-  final Coordinates _value;
   // ignore: unused_field
-  final $Res Function(Coordinates) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? latitude = freezed,
-    Object? longitude = freezed,
+    Object? latitude = null,
+    Object? longitude = null,
   }) {
     return _then(_value.copyWith(
-      latitude: latitude == freezed
+      latitude: null == latitude
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
               as double,
-      longitude: longitude == freezed
+      longitude: null == longitude
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as double,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$CoordinatesCopyWith<$Res>
+abstract class _$$_CoordinatesCopyWith<$Res>
     implements $CoordinatesCopyWith<$Res> {
-  factory _$CoordinatesCopyWith(
-          _Coordinates value, $Res Function(_Coordinates) then) =
-      __$CoordinatesCopyWithImpl<$Res>;
+  factory _$$_CoordinatesCopyWith(
+          _$_Coordinates value, $Res Function(_$_Coordinates) then) =
+      __$$_CoordinatesCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({double latitude, double longitude});
 }
 
 /// @nodoc
-class __$CoordinatesCopyWithImpl<$Res> extends _$CoordinatesCopyWithImpl<$Res>
-    implements _$CoordinatesCopyWith<$Res> {
-  __$CoordinatesCopyWithImpl(
-      _Coordinates _value, $Res Function(_Coordinates) _then)
-      : super(_value, (v) => _then(v as _Coordinates));
+class __$$_CoordinatesCopyWithImpl<$Res>
+    extends _$CoordinatesCopyWithImpl<$Res, _$_Coordinates>
+    implements _$$_CoordinatesCopyWith<$Res> {
+  __$$_CoordinatesCopyWithImpl(
+      _$_Coordinates _value, $Res Function(_$_Coordinates) _then)
+      : super(_value, _then);
 
-  @override
-  _Coordinates get _value => super._value as _Coordinates;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? latitude = freezed,
-    Object? longitude = freezed,
+    Object? latitude = null,
+    Object? longitude = null,
   }) {
-    return _then(_Coordinates(
-      latitude: latitude == freezed
+    return _then(_$_Coordinates(
+      latitude: null == latitude
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
               as double,
-      longitude: longitude == freezed
+      longitude: null == longitude
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as double,
@@ -424,45 +381,46 @@ class _$_Coordinates implements _Coordinates {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Coordinates &&
+        (other.runtimeType == runtimeType &&
+            other is _$_Coordinates &&
             (identical(other.latitude, latitude) ||
-                const DeepCollectionEquality()
-                    .equals(other.latitude, latitude)) &&
+                other.latitude == latitude) &&
             (identical(other.longitude, longitude) ||
-                const DeepCollectionEquality()
-                    .equals(other.longitude, longitude)));
+                other.longitude == longitude));
   }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(latitude) ^
-      const DeepCollectionEquality().hash(longitude);
 
   @JsonKey(ignore: true)
   @override
-  _$CoordinatesCopyWith<_Coordinates> get copyWith =>
-      __$CoordinatesCopyWithImpl<_Coordinates>(this, _$identity);
+  int get hashCode => Object.hash(runtimeType, latitude, longitude);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_CoordinatesCopyWith<_$_Coordinates> get copyWith =>
+      __$$_CoordinatesCopyWithImpl<_$_Coordinates>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CoordinatesToJson(this);
+    return _$$_CoordinatesToJson(
+      this,
+    );
   }
 }
 
 abstract class _Coordinates implements Coordinates {
   const factory _Coordinates(
-      {required double latitude, required double longitude}) = _$_Coordinates;
+      {required final double latitude,
+      required final double longitude}) = _$_Coordinates;
 
   factory _Coordinates.fromJson(Map<String, dynamic> json) =
       _$_Coordinates.fromJson;
 
   @override
-  double get latitude => throw _privateConstructorUsedError;
+  double get latitude;
   @override
-  double get longitude => throw _privateConstructorUsedError;
+  double get longitude;
   @override
   @JsonKey(ignore: true)
-  _$CoordinatesCopyWith<_Coordinates> get copyWith =>
+  _$$_CoordinatesCopyWith<_$_Coordinates> get copyWith =>
       throw _privateConstructorUsedError;
 }

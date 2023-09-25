@@ -1,17 +1,22 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'models.dart';
 
-// TODO(mono): Use riverpod_generator
-final showFavoritesOnlyProvider = StateProvider((ref) => false);
+part 'user_data.g.dart';
 
-final favoriteController =
-    StateNotifierProvider<FavoriteController, Map<int, bool>>(
-  (ref) => FavoriteController(),
-);
+@riverpod
+class ShowFavoritesOnly extends _$ShowFavoritesOnly {
+  @override
+  bool build() => false;
 
-class FavoriteController extends StateNotifier<Map<int, bool>> {
-  FavoriteController() : super({});
+  void toggle() => state = !state;
+}
+
+@riverpod
+class Favorite extends _$Favorite {
+  // TODO(mono): freezed化
+  @override
+  Map<int, bool> build() => {};
 
   void update({required int id, required bool isFavorite}) {
     state = {
@@ -21,22 +26,23 @@ class FavoriteController extends StateNotifier<Map<int, bool>> {
   }
 }
 
-final isFavoriteProviders = Provider.family((ref, int id) {
-  final favoriteMap = ref.watch(favoriteController);
+@riverpod
+bool isFavorite(IsFavoriteRef ref, int id) {
+  final favoriteMap = ref.watch(favoriteProvider);
   return favoriteMap.containsKey(id);
-});
+}
 
-final landmarkProviders = Provider.family((ref, int id) {
-  return (ref.watch(landmarkDataProvider).value ?? [])
-      .firstWhere((l) => l.id == id);
-});
+@riverpod
+FutureOr<Landmark> landmark(LandmarkRef ref, int id) async =>
+    (await ref.watch(landmarkDataProvider.future))
+        .firstWhere((l) => l.id == id);
 
-final landmarkListProvider = Provider((ref) {
-  final landmarks = ref.watch(landmarkDataProvider).value ?? [];
-  final showFavoritesOnly = ref.watch(showFavoritesOnlyProvider);
-  final favoriteMap = ref.watch(favoriteController);
+@riverpod
+Future<List<Landmark>> landmarkList(LandmarkListRef ref) async {
+  final landmarks = await ref.watch(landmarkDataProvider.future);
+  final favoriteMap = ref.watch(favoriteProvider);
 
-  return showFavoritesOnly
+  return ref.watch(showFavoritesOnlyProvider)
       ? landmarks.where((l) => favoriteMap.containsKey(l.id)).toList()
       : landmarks;
-});
+}

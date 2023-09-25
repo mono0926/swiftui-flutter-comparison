@@ -14,8 +14,8 @@ class Content extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final textTheme = Theme.of(context).textTheme;
     final id = ref.watch(selectedLandmarkId)!;
-    final landmark = ref.watch(landmarkProviders(id));
-    final isFavorite = ref.watch(isFavoriteProviders(id));
+    final landmark = ref.watch(landmarkProviderFamily(id)).value!;
+    final isFavorite = ref.watch(isFavoriteProviderFamily(id));
     return Column(
       children: [
         Stack(
@@ -46,7 +46,7 @@ class Content extends ConsumerWidget {
                   ),
                   CupertinoButton(
                     onPressed: () {
-                      ref.read(favoriteController.notifier).update(
+                      ref.read(favoriteProvider.notifier).update(
                             id: id,
                             isFavorite: !isFavorite,
                           );

@@ -2,26 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mono_kit/mono_kit.dart';
-import 'package:provider/provider.dart';
-import 'package:route_observer_mixin/route_observer_mixin.dart';
 
 import 'pages/pages.dart';
 
 void main() => runApp(
-      MultiProvider(
-        providers: [
-          RouteObserverProvider(),
-        ],
-        child: const ProviderScope(
-          child: App(),
-        ),
+      const ProviderScope(
+        child: App(),
       ),
     );
 
 class App extends StatelessWidget {
   const App({super.key});
 
-  static final _pushRoutes = {
+  static final _routes = {
     '/': const HomePage(),
     LandmarksPage.routeName: const LandmarksPage(),
   };
@@ -32,26 +25,22 @@ class App extends StatelessWidget {
       data: _theme(),
       child: CupertinoApp(
         title: 'Flutter',
-        navigatorObservers: [RouteObserverProvider.of(context)],
+        theme: const CupertinoThemeData(
+          barBackgroundColor: Colors.white,
+        ),
         onGenerateRoute: (settings) {
           final routeName = settings.name!;
-          final pushPage = _pushRoutes[routeName];
-          if (pushPage != null) {
+          final route = _routes[routeName];
+          if (route != null) {
             final title = routeName.replaceAll('/', '');
-            return CupertinoPageRoute<dynamic>(
+            return CupertinoPageRoute<void>(
               settings: settings,
-              builder: (context) => pushPage,
+              builder: (context) => route,
               title: title.isEmpty ? 'Flutter' : title,
             );
           }
           return null;
         },
-        builder: (context, child) => CupertinoTheme(
-          data: const CupertinoThemeData(
-            barBackgroundColor: Colors.white,
-          ),
-          child: child!,
-        ),
       ),
     );
   }
