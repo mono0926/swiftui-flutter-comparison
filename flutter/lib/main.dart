@@ -29,7 +29,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: _buildTheme(),
+      data: _theme(),
       child: CupertinoApp(
         title: 'Flutter',
         navigatorObservers: [RouteObserverProvider.of(context)],
@@ -46,11 +46,17 @@ class App extends StatelessWidget {
           }
           return null;
         },
+        builder: (context, child) => CupertinoTheme(
+          data: const CupertinoThemeData(
+            barBackgroundColor: Colors.white,
+          ),
+          child: child!,
+        ),
       ),
     );
   }
 
-  ThemeData _buildTheme() {
+  ThemeData _theme() {
     final base = ThemeData.light();
     return base
         .copyWith(

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:swiftui_flutter/widgets/widgets.dart';
 
 import 'landmark_row.dart';
 import 'models/models.dart';
@@ -17,11 +17,14 @@ class LandmarksPage extends ConsumerWidget {
       child: CustomScrollView(
         slivers: [
           const CupertinoSliverNavigationBar(),
-          SliverList(
-            delegate: SliverChildListDelegate.fixed(
-              [
-                CupertinoCell(
-                  child: Row(
+          // https://github.com/flutter/flutter/issues/119558
+          SliverToBoxAdapter(
+            child: CupertinoListSection(
+              topMargin: 0,
+              backgroundColor: Colors.transparent,
+              children: [
+                CupertinoListTile(
+                  title: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text('Favorites only'),
@@ -34,16 +37,8 @@ class LandmarksPage extends ConsumerWidget {
                     ],
                   ),
                 ),
+                for (final landmark in landmarks) LandmarkRow(id: landmark.id),
               ],
-            ),
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                final landmark = landmarks[index];
-                return LandmarkRow(id: landmark.id);
-              },
-              childCount: landmarks.length,
             ),
           ),
         ],
